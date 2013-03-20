@@ -10,6 +10,7 @@
 OLW_fnc_azimuth = {
 	["%1 OLW_fnc_azimuth (1.0)", _this , 2] call OLW_fnc_debug;
 
+	
 	private ["_angle"];
 	_observer 				= [(_this select 0) select 0 , (_this select 0) select 1 , 0];
 	_observed 				= [(_this select 1) select 0 , (_this select 1) select 1 , 0];
@@ -45,6 +46,7 @@ OLW_fnc_azimuth = {
 OLW_fnc_stopovers = {
 	["%1 OLW_fnc_stopovers (1.0)", _this , 2] call OLW_fnc_debug;
 
+	
 	private ["_allStopovers"];
 	_arrival 				= [(_this select 0) select 0 , (_this select 0) select 1 , 0];
 	_departure 				= [(_this select 1) select 0 , (_this select 1) select 1 , 0];
@@ -69,7 +71,6 @@ OLW_fnc_stopovers = {
 
 
 // [arrival (Position), departure (Position), segment length (Number), angle offset (Number)]
-// return segment (Position)
 // return stopOver's position (Array)
 OLW_fnc_stopover = {
 	["%1 OLW_fnc_stopover (1.1)", _this , 2] call OLW_fnc_debug;
@@ -119,33 +120,10 @@ OLW_fnc_stopover = {
 
 // [object (Object), object (Object), ...]
 // return position (Array)
-OLW_fnc_center2D = {
-	["%1 OLW_fnc_center2D (1.0)", _this, 2] call OLW_fnc_debug;
-
-	_posX 					= 0;
-	_posY 					= 0;
-	_posZ					= 0;
-	_i 						= count _this;
-
-	{
-		_posX 				= _posX + (getPos _x select 0);
-		_posY 				= _posY + (getPos _x select 1);
-	} foreach _this;
-
-	_posX 					= _posX / _i;
-	_posY 					= _posY / _i;
-	
-	[_posX, _posY, _posZ]
-};
-
-
-
-
-// [object (Object), object (Object), ...]
-// return position (Array)
 OLW_fnc_center3D = {
-	["%1 OLW_fnc_center3D (1.0)", _this, 2] call OLW_fnc_debug;
+	["%1 OLW_fnc_center3D (1.0)", _this , 2] call OLW_fnc_debug;
 
+	
 	_posX 					= 0;
 	_posY 					= 0;
 	_posZ					= 0;
@@ -162,6 +140,21 @@ OLW_fnc_center3D = {
 	_posY 					= _posZ / _i;
 	
 	[_posX, _posY, _posZ]
+};
+
+
+
+
+// [object (Object), object (Object), ...]
+// return position (Array)
+OLW_fnc_center2D = {
+	["%1 OLW_fnc_center2D (2.0)", _this , 2] call OLW_fnc_debug;
+
+	
+	_pos 					= _this call OLW_fnc_center3D;
+	
+	
+	[_pos select 0 , _pos select 1 , 0]
 };
 
 
