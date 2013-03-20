@@ -45,9 +45,8 @@ OLW_fnc_debug = {
 	//[errorLevel 0 : foo]
 	//[    errorLevel 16 : bar]
 	_message 				= format _this;
-	while {_i > 0} do {
+	for "_j" from 1 to _i do {
 		_message 			= format ["  %1", _message];
-		_i 					= _i - 1;
 	};
 
 	
