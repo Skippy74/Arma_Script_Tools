@@ -14,9 +14,9 @@ OLW_fnc_arrayMerge = {
 	_outputArray 			= [];
 
 	{
-		if ((typeName _x) != "ARRAY") exitWith { };
-
-		for [{ _i = 0 }, { _i < count _x }, { _i = _i + 1 }] do {
+		assert (_x call OLW_fnc_isArray);
+		
+		for "_i" from 0 to ((count _x) - 1) do {
 			_outputArray set [count _outputArray, _x select _i];
 		};
 	} foreach _this;
@@ -36,13 +36,30 @@ OLW_fnc_expandArray = {
 	_outputArray 			= [];
 	
 	{
+		assert (_x call OLW_fnc_isArray);
+
 		_item 				= _x select 0;
 		_number 			= _x select 1;
 
-		for [{ _i = _number }, { _i > 0 }, { _i = _i - 1 }] do {
+		for "_i" from 1 to _number do {
 			_outputArray set [count _outputArray, _item];
 		};
 	} foreach _this;
 	
 	_outputArray
 };
+
+
+
+
+// [array (Array)]
+// return BOOL
+OLW_fnc_isArray = {
+	["%1 OLW_fnc_isArray (1.0)", _this , 2] call OLW_fnc_debug;
+
+	
+	((typeName _this) == "ARRAY")
+};
+
+
+
