@@ -14,19 +14,19 @@ OLW_fnc_debug = {
 	// 2 : Functions Trace
 	// 3 : --
 	// 4 : Variables Dump
-	_messageLevel 			= _this select ((count _this) - 1);
+	_messageLevel 			= _this call BIS_fnc_arrayPop;
 
 	
 	// if messageLevel > debugLevel, there is no need to make further tests
 	if (_messageLevel > MISSION_debugLevel) exitWith {}; 
 
+	
+	// bitwise AND
 	_pattern				= _messageLevel;
 	_mask					= MISSION_debugLevel;
 	_result					= 0;
 	_i						= 0;
 	
-	
-	// bitwise AND
 	while {(_pattern != 0) AND (_mask != 0)} do {
 		_bit				= (_pattern % 2) * (_mask % 2);
 		_result				= _result + ((2 ^ _i) * _bit);
@@ -37,21 +37,22 @@ OLW_fnc_debug = {
 	};
 	
 	
-	// print message if debugLevel permits it
-	if (_messageLevel == _result) then {
-		_message 			= format _this;
+	// message is printed
+	if (_messageLevel != _result) exitWith {}; 
+	
 
-		// add blank spaces before the message
-		//[errorLevel 0 : blabla]
-		//[    errorLevel 16 : blabla]
-		while {_i > 0} do {
-			_message 		= format ["  %1", _message];
-			_i 				= _i - 1;
-		};
-
-		//send message to sidechat
-		player sidechat _message;
+	// add blank spaces before the message
+	//[errorLevel 0 : foo]
+	//[    errorLevel 16 : bar]
+	_message 				= format _this;
+	while {_i > 0} do {
+		_message 			= format ["  %1", _message];
+		_i 					= _i - 1;
 	};
+
+	
+	//send message to sidechat
+	player sidechat _message;
 };
 
 
@@ -64,7 +65,7 @@ OLW_fnc_debugOnce = {
 
 	_uID 					= _this call BIS_fnc_arrayPop;
 	
-	if (!(_uID in OLW_debugArray)) then {
+	if !(_uID in OLW_debugArray) then {
 		OLW_debugArray set [count OLW_debugArray, _uID];
 		publicVariable "OLW_debugArray";
 
@@ -75,7 +76,8 @@ OLW_fnc_debugOnce = {
 
 
 
-// [message (String)]
+// [message (String), calling function (String)]
+scopeName "OLW_fatal";
 OLW_fnc_fatal = {
 
 
@@ -85,7 +87,7 @@ OLW_fnc_fatal = {
 	_message 				= format ["[FATAL in %2] %1", _message, _this select (_argc - 1)];
 	
 	player sideChat _message;
-	breakTo "OLW_mission_floor";
+	breakTo "OLW_fatal";
 };
 
 
