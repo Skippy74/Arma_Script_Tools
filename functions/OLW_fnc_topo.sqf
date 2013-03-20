@@ -130,9 +130,9 @@ OLW_fnc_center3D = {
 	_i 						= count _this;
 
 	{
-		_posX 				= _posX + (getPos _x select 0);
-		_posY 				= _posY + (getPos _x select 1);
-		_posZ 				= _posZ + (getPos _x select 2);
+		_posX 				= _posX + (getPosATL _x select 0);
+		_posY 				= _posY + (getPosATL _x select 1);
+		_posZ 				= _posZ + (getPosATL _x select 2);
 	} foreach _this;
 
 	_posX 					= _posX / _i;
