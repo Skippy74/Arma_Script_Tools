@@ -58,7 +58,7 @@ OLW_fnc_isBurried = {
 	
 	_object					= _this select 0;
 	_height					= [_object] call OLW_fnc_getObjectSizeZ;
-	_posZ					= (getPos _object) select 2;
+	_posZ					= (getPosATL _object) select 2;
 	
 	
 	((_height + _posZ) < 0)
@@ -76,9 +76,9 @@ OLW_fnc_move = {
 	_offset					= _this select 1;
 
 	
-	_object setPos [(getPos _object select 0) + (_offset select 0), 
-					(getPos _object select 1) + (_offset select 1),
-					(getPos _object select 2) + (_offset select 2)];
+	_object setPos [(getPosATL _object select 0) + (_offset select 0), 
+					(getPosATL _object select 1) + (_offset select 1),
+					(getPosATL _object select 2) + (_offset select 2)];
 };
 
 
