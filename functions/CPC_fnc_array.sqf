@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ï»¿/* ************************************************************************** */
 	["CPC_fnc_array.sqf (1.06)", 1] call CPC_fnc_debug;
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ CPC_fnc_arrayMerge = {
  * @author 					la_Vieille (laVieille.fr@gmail.com)
  * @version 				1.01
  * @param 		array 		(any number of) two items array : [element, number]
- * @return 		array 		the final array contains ’number’ times each
- * 							’element’
+ * @return 		array 		the final array contains 'number' times each
+ * 							'element'
  *
  * @example 				we need to spawn a soldier and would like his
  * 							className to be random (say 5% leader, 20% AR,

@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ï»¿/* ************************************************************************** */
 	["CPC_fnc_vehicle.sqf (1.01)", 1] call CPC_fnc_debug;
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ CPC_fnc_isBurried = {
 
 
 /**
- * Gets an object and an array and change ’object’ position according to the 
+ * Gets an object and an array and change 'object' position according to the 
  * values in the array. 
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)

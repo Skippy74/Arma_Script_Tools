@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ï»¿/* ************************************************************************** */
 	["CPC_fnc_topo.sqf (1.01)", 1] call CPC_fnc_debug;
 /* ************************************************************************** */
 
@@ -11,8 +11,8 @@
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)
  * @version 				1.01
- * @param 		array 		observer’s position
- * @param 		array 		observed’s position
+ * @param 		array 		observer's position
+ * @param 		array 		observed's position
  * @return 		number 		angle in degrees
  */
 CPC_fnc_azimuth = {
@@ -50,18 +50,18 @@ CPC_fnc_azimuth = {
 
 
 /**
- * Gets 2 positions (’arrival’ and ’departure’), a ’distance’ and an optional 
- * ’angleOffset’, returns an array of waypoints that starts with ’departure’
- * and finishes with ’arrival’, located at ’distance’ from one another.
+ * Gets 2 positions ('arrival' and 'departure'), a 'distance' and an optional 
+ * 'angleOffset', returns an array of waypoints that starts with 'departure'
+ * and finishes with 'arrival', located at 'distance' from one another.
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)
  * @version 				1.01
- * @param 		array 		arrival’s position
- * @param 		array 		departure’s position
+ * @param 		array 		arrival's position
+ * @param 		array 		departure's position
  * @param 		number 		distance
- * @param 		number 		(optional) ’angleOffset’ in degrees ; 
- * 							the stopover’s position is shifted by a randomized 
- * 							angle from its trajectory if ’angleOffset’ is given
+ * @param 		number 		(optional) 'angleOffset' in degrees ;
+ * 							the stopover's position is shifted by a randomized 
+ * 							angle from its trajectory if 'angleOffset' is given
  * 							and not zero
  * @return 		array 		array of waypoints positions
  */
@@ -93,21 +93,21 @@ CPC_fnc_stopovers = {
 
 
 /**
- * Gets 2 positions (’arrival’ and ’departure’) and a ’distance’, returns 
- * a position (’stopover’) located at ’distance’ from ’arrival’ or ’departure’.
+ * Gets 2 positions ('arrival' and 'departure') and a 'distance', returns 
+ * a position ('stopover') located at 'distance' from 'arrival' or 'departure'.
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)
  * @version 				1.10
- * @param 		array 		arrival’s position
- * @param 		array 		departure’s position
+ * @param 		array 		arrival's position
+ * @param 		array 		departure's position
  * @param 		number 		distance ;
- * 							if negative, distance is from ’arrival’, 
- * 							if positive, distance is from ’departure’, 
- * @param 		number 		(optional) ’angleOffset’ in degrees ; 
- * 							the stopover’s position is shifted by a randomized 
- * 							angle from its trajectory if ’angleOffset’ is given
+ * 							if negative, distance is from 'arrival', 
+ * 							if positive, distance is from 'departure', 
+ * @param 		number 		(optional) 'angleOffset' in degrees ;
+ * 							the stopover's position is shifted by a randomized 
+ * 							angle from its trajectory if 'angleOffset' is given
  * 							and not zero
- * @return 		array 		’stopover’ position
+ * @return 		array 		'stopover' position
  */
 CPC_fnc_stopover = {
 	["%1 CPC_fnc_stopover (1.10)", _this , 2] call CPC_fnc_debug;
