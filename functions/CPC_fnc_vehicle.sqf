@@ -72,17 +72,20 @@ CPC_fnc_getObjectSizeZ = {
  * Gets an object and returns its size.
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)
- * @version 				1.01
+ * @version 				1.02
  * @param 		vehicle		object
  * @return 		array		size of object
  */
 CPC_fnc_getObjectSize = {
-	["%1 CPC_fnc_getObjectSize (1.01)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_getObjectSize (1.02)", _this , 2] call CPC_fnc_debug;
+	
+	
+	_boundingBox 			= boundingBox _this select 0;
 	
 		
-	[ _this call CPC_fnc_getObjectSizeX, 
-	  _this call CPC_fnc_getObjectSizeY, 
-	  _this call CPC_fnc_getObjectSizeZ ]
+	[ ((_boundingBox select 1) select 0) - ((_boundingBox select 0) select 0), 
+	  ((_boundingBox select 1) select 1) - ((_boundingBox select 0) select 1), 
+	  ((_boundingBox select 1) select 2) - ((_boundingBox select 0) select 2) ]
 };
 
 
