@@ -19,8 +19,8 @@ HOW TO USE
     [params] call OLW_fnc_XXXXXXX
 
 
-IF YOU WANT TO STAY UPDATED
----------------------------
+IF YOU WANT TO STAY UP-TO-DATE
+------------------------------
 
 1. Sync the online repository with your local copy, using Github or similar software
 2. Place a symbolic link into your mission's folder, pointing to your local copy of sync'ed repo, using the following command :
