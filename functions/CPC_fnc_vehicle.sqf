@@ -9,18 +9,18 @@
  * Gets an object and returns its length.
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)
- * @version 				1.02
+ * @version 				1.03
  * @param 		vehicle		object
  * @return 		number		length of object
  */
 CPC_fnc_getObjectSizeX = {
-	["%1 CPC_fnc_getObjectSizeX (1.02)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_getObjectSizeX (1.03)", _this , 2] call CPC_fnc_debug;
 	
 	
-	_object 				= _this select 0;
+	_boundingBox 			= boundingBox _this select 0;
 	
 	
-	((((boundingBox _object) select 1) select 0) - (((boundingBox _object) select 0) select 0))
+	(((_boundingBox select 1) select 0) - ((_boundingBox select 0) select 0))
 };
 
 
@@ -30,18 +30,18 @@ CPC_fnc_getObjectSizeX = {
  * Gets an object and returns its width.
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)
- * @version 				1.02
+ * @version 				1.03
  * @param 		vehicle		object
  * @return 		number		width of object
  */
 CPC_fnc_getObjectSizeY = {
-	["%1 CPC_fnc_getObjectSizeY (1.02)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_getObjectSizeY (1.03)", _this , 2] call CPC_fnc_debug;
 	
 	
-	_object 				= _this select 0;
+	_boundingBox 			= boundingBox _this select 0;
 	
 	
-	((((boundingBox _object) select 1) select 1) - (((boundingBox _object) select 0) select 1))
+	(((_boundingBox select 1) select 1) - ((_boundingBox select 0) select 1))
 };
 
 
@@ -51,18 +51,18 @@ CPC_fnc_getObjectSizeY = {
  * Gets an object and returns its height.
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)
- * @version 				1.02
+ * @version 				1.03
  * @param 		vehicle		object
  * @return 		number		height of object
  */
 CPC_fnc_getObjectSizeZ = {
-	["%1 CPC_fnc_getObjectSizeZ (1.02)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_getObjectSizeZ (1.03)", _this , 2] call CPC_fnc_debug;
 	
 	
-	_object 				= _this select 0;
+	_boundingBox 			= boundingBox _this select 0;
 	
 	
-	((((boundingBox _object) select 1) select 2) - (((boundingBox _object) select 0) select 2))
+	(((_boundingBox select 1) select 2) - ((_boundingBox select 0) select 2))
 };
 
 
