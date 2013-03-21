@@ -69,6 +69,26 @@ CPC_fnc_getObjectSizeZ = {
 
 
 /**
+ * Gets an object and returns its size.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		vehicle		object
+ * @return 		array		size of object
+ */
+CPC_fnc_getObjectSize = {
+	["%1 CPC_fnc_getObjectSize (1.01)", _this , 2] call CPC_fnc_debug;
+	
+		
+	[ _this call CPC_fnc_getObjectSizeX, 
+	  _this call CPC_fnc_getObjectSizeY, 
+	  _this call CPC_fnc_getObjectSizeZ ]
+};
+
+
+
+
+/**
  * Gets an object and check if it is burried and visible or not.
  * 
  * @author 					la_Vieille (laVieille.fr@gmail.com)
