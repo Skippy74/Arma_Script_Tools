@@ -1,12 +1,12 @@
 /* ************************************************************************** */ 
-	["OLW_fnc_debug.sqf (1.01)", 1] call OLW_fnc_debug;
+	["CPC_fnc_debug.sqf (1.01)", 1] call CPC_fnc_debug;
 /* ************************************************************************** */
 
 
 
 
 // [message (String), level (Number)]
-OLW_fnc_debug = {
+CPC_fnc_debug = {
 
 
 	// 0 : tous les messages
@@ -58,17 +58,17 @@ OLW_fnc_debug = {
 
 
 // [message (String), level (Number), unique ID (Number)]
-OLW_debugArray 				= [];
-OLW_fnc_debugOnce = {
+CPC_debugArray 				= [];
+CPC_fnc_debugOnce = {
 
 
 	_uID 					= _this call BIS_fnc_arrayPop;
 	
-	if !(_uID in OLW_debugArray) then {
-		OLW_debugArray set [count OLW_debugArray, _uID];
-		publicVariable "OLW_debugArray";
+	if !(_uID in CPC_debugArray) then {
+		CPC_debugArray set [count CPC_debugArray, _uID];
+		publicVariable "CPC_debugArray";
 
-		_this call OLW_fnc_debug;
+		_this call CPC_fnc_debug;
 	};
 };
 
@@ -76,8 +76,8 @@ OLW_fnc_debugOnce = {
 
 
 // [message (String), calling function (String)]
-scopeName "OLW_fatal";
-OLW_fnc_fatal = {
+scopeName "CPC_fatal";
+CPC_fnc_fatal = {
 
 
 	_argc 					= count _this;
@@ -86,7 +86,7 @@ OLW_fnc_fatal = {
 	_message 				= format ["[FATAL in %2] %1", _message, _this select (_argc - 1)];
 	
 	player sideChat _message;
-	breakTo "OLW_fatal";
+	breakTo "CPC_fatal";
 };
 
 

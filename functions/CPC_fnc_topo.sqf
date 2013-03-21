@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-	["OLW_fnc_topo.sqf (1.01)", 1] call OLW_fnc_debug;
+	["CPC_fnc_topo.sqf (1.01)", 1] call CPC_fnc_debug;
 /* ************************************************************************** */
 
 
@@ -7,8 +7,8 @@
 
 // [observer (Position), observed (Position)] 
 // return azimuth in degree (from North = 0)
-OLW_fnc_azimuth = {
-	["%1 OLW_fnc_azimuth (1.0)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_azimuth = {
+	["%1 CPC_fnc_azimuth (1.0)", _this , 2] call CPC_fnc_debug;
 
 	
 	private ["_angle"];
@@ -43,8 +43,8 @@ OLW_fnc_azimuth = {
 
 // [arrival (Position), departure (Position), segmentLength (Number), angleOffset (Number)]
 // return Positions (Arrays)
-OLW_fnc_stopovers = {
-	["%1 OLW_fnc_stopovers (1.0)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_stopovers = {
+	["%1 CPC_fnc_stopovers (1.0)", _this , 2] call CPC_fnc_debug;
 
 	
 	private ["_allStopovers"];
@@ -60,7 +60,7 @@ OLW_fnc_stopovers = {
 
 	
 	while {_departure != _arrival} do {
-		_departure 			= [_arrival, _departure, _length, _angleOffset] call OLW_fnc_stopover;
+		_departure 			= [_arrival, _departure, _length, _angleOffset] call CPC_fnc_stopover;
 		_allStopovers set [count _allStopovers, _departure];
 	};
 	
@@ -72,8 +72,8 @@ OLW_fnc_stopovers = {
 
 // [arrival (Position), departure (Position), segment length (Number), angle offset (Number)]
 // return stopOver's position (Array)
-OLW_fnc_stopover = {
-	["%1 OLW_fnc_stopover (1.1)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_stopover = {
+	["%1 CPC_fnc_stopover (1.1)", _this , 2] call CPC_fnc_debug;
 
 
 	private ["_stopover", "_o"];
@@ -82,7 +82,7 @@ OLW_fnc_stopover = {
 	_length 				= _this select 2;
 	
 	_distance 				= _arrival distance _departure;
-	_angle 					= [_arrival, _departure] call OLW_fnc_azimuth;
+	_angle 					= [_arrival, _departure] call CPC_fnc_azimuth;
 
 	
 	// Angle offset is between -offset and +offset
@@ -120,8 +120,8 @@ OLW_fnc_stopover = {
 
 // [object (Object), object (Object), ...]
 // return position (Array)
-OLW_fnc_center3D = {
-	["%1 OLW_fnc_center3D (1.0)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_center3D = {
+	["%1 CPC_fnc_center3D (1.0)", _this , 2] call CPC_fnc_debug;
 
 	
 	_posX 					= 0;
@@ -147,11 +147,11 @@ OLW_fnc_center3D = {
 
 // [object (Object), object (Object), ...]
 // return position (Array)
-OLW_fnc_center2D = {
-	["%1 OLW_fnc_center2D (2.0)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_center2D = {
+	["%1 CPC_fnc_center2D (2.0)", _this , 2] call CPC_fnc_debug;
 
 	
-	_pos 					= _this call OLW_fnc_center3D;
+	_pos 					= _this call CPC_fnc_center3D;
 	
 	
 	[_pos select 0 , _pos select 1 , 0]

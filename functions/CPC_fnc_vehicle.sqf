@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-	["OLW_fnc_vehicle.sqf (1.01)", 1] call OLW_fnc_debug;
+	["CPC_fnc_vehicle.sqf (1.01)", 1] call CPC_fnc_debug;
 /* ************************************************************************** */
 
 
@@ -7,8 +7,8 @@
 
 // [object (Vehicle)] 
 // return boundingBox based length
-OLW_fnc_getObjectSizeX = {
-	["%1 OLW_fnc_getObjectSizeX (1.1)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_getObjectSizeX = {
+	["%1 CPC_fnc_getObjectSizeX (1.1)", _this , 2] call CPC_fnc_debug;
 	
 	
 	_object 				= _this select 0;
@@ -22,8 +22,8 @@ OLW_fnc_getObjectSizeX = {
 
 // [object (Vehicle)] 
 // return boundingBox based width
-OLW_fnc_getObjectSizeY = {
-	["%1 OLW_fnc_getObjectSizeY (1.1)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_getObjectSizeY = {
+	["%1 CPC_fnc_getObjectSizeY (1.1)", _this , 2] call CPC_fnc_debug;
 	
 	
 	_object 				= _this select 0;
@@ -37,8 +37,8 @@ OLW_fnc_getObjectSizeY = {
 
 // [object (Vehicle)] 
 // return boundingBox based height
-OLW_fnc_getObjectSizeZ = {
-	["%1 OLW_fnc_getObjectSizeZ (1.1)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_getObjectSizeZ = {
+	["%1 CPC_fnc_getObjectSizeZ (1.1)", _this , 2] call CPC_fnc_debug;
 	
 	
 	_object 				= _this select 0;
@@ -52,12 +52,12 @@ OLW_fnc_getObjectSizeZ = {
 
 // [object (Vehicle)]
 // return BOOL
-OLW_fnc_isBurried = {
-	["%1 OLW_fnc_isBurried (1.1)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_isBurried = {
+	["%1 CPC_fnc_isBurried (1.1)", _this , 2] call CPC_fnc_debug;
 
 	
 	_object					= _this select 0;
-	_height					= [_object] call OLW_fnc_getObjectSizeZ;
+	_height					= [_object] call CPC_fnc_getObjectSizeZ;
 	_posZ					= (getPosATL _object) select 2;
 	
 	
@@ -68,8 +68,8 @@ OLW_fnc_isBurried = {
 
 
 // [object (Vehicle), offset (Array)]
-OLW_fnc_move = {
-	["%1 OLW_fnc_move (1.0)", _this , 2] call OLW_fnc_debug;
+CPC_fnc_move = {
+	["%1 CPC_fnc_move (1.0)", _this , 2] call CPC_fnc_debug;
 
 	
 	_object					= _this select 0;

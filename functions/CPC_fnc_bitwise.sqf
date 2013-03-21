@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-	["OLW_fnc_bitwise.sqf (1.06)", 1] call OLW_fnc_debug;
+	["CPC_fnc_bitwise.sqf (1.06)", 1] call CPC_fnc_debug;
 /* ************************************************************************** */
 
 
@@ -7,8 +7,8 @@
 
 // [pattern (Number)]
 // return NUMBER
-OLW_fnc_bitwiseNot = {
-	["%1 OLW_fnc_bitwiseNot (1.0)", _this, 2] call OLW_fnc_debug;
+CPC_fnc_bitwiseNot = {
+	["%1 CPC_fnc_bitwiseNot (1.0)", _this, 2] call CPC_fnc_debug;
 
 	_pattern				= _this select 0;
 	_final					= 0;
@@ -32,8 +32,8 @@ OLW_fnc_bitwiseNot = {
 
 // [pattern (Number), mask (Number)]
 // return NUMBER
-OLW_fnc_bitwiseAnd = {
-	["%1 OLW_fnc_bitwiseAnd (1.0)", _this, 2] call OLW_fnc_debug;
+CPC_fnc_bitwiseAnd = {
+	["%1 CPC_fnc_bitwiseAnd (1.0)", _this, 2] call CPC_fnc_debug;
 
 	_pattern				= _this select 0;
 	_mask					= _this select 1;
@@ -59,8 +59,8 @@ OLW_fnc_bitwiseAnd = {
 
 // [pattern (Number), mask (Number)]
 // return NUMBER
-OLW_fnc_bitwiseOr = {
-	["%1 OLW_fnc_bitwiseOr (1.0)", _this, 2] call OLW_fnc_debug;
+CPC_fnc_bitwiseOr = {
+	["%1 CPC_fnc_bitwiseOr (1.0)", _this, 2] call CPC_fnc_debug;
 
 	_pattern				= _this select 0;
 	_mask					= _this select 1;
@@ -89,8 +89,8 @@ OLW_fnc_bitwiseOr = {
 
 // [pattern (Number), mask (Number)]
 // return NUMBER
-OLW_fnc_bitwiseXor = {
-	["%1 OLW_fnc_bitwiseXor (1.0)", _this, 2] call OLW_fnc_debug;
+CPC_fnc_bitwiseXor = {
+	["%1 CPC_fnc_bitwiseXor (1.0)", _this, 2] call CPC_fnc_debug;
 
 	_pattern				= _this select 0;
 	_mask					= _this select 1;
