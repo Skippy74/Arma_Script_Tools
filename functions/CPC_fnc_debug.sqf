@@ -5,7 +5,17 @@
 
 
 
-// [message (String), level (Number)]
+/**
+ * Gets a ’message’ and send it to sideChat if the associated ’messageLevel’ 
+ * complies with the ’MISSION_debugLevel’ global parameter.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		string 		message
+ * @param 		any 		(optional) params that can be inserted into 
+ * 							’message’ via the ’format’ command 
+ * @param 		number 		messageLevel
+ */
 CPC_fnc_debug = {
 
 
@@ -57,6 +67,20 @@ CPC_fnc_debug = {
 
 
 
+/**
+ * Gets debugMessage (message, optional values, messageLevel) associated to an
+ * UID to ensure that the message is displayed only once. 
+ * 
+ * Great to track variables’ modifications at the start of a loop 
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		string 		message
+ * @param 		any 		(optional) params that can be inserted into 
+ * 							’message’ via the ’format’ command 
+ * @param 		number 		messageLevel
+ * @param 		string 		uniqueIdentity
+ */
 // [message (String), level (Number), unique ID (Number)]
 CPC_debugArray 				= [];
 CPC_fnc_debugOnce = {
@@ -75,7 +99,17 @@ CPC_fnc_debugOnce = {
 
 
 
-// [message (String), calling function (String)]
+/**
+ * Stops execution of a script or a function and send a warning message to 
+ * sideChat.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		string 		message
+ * @param 		any 		(optional) params that can be inserted into 
+ * 							’message’ via the ’format’ command 
+ * @param 		string 		name of calling function or script
+ */
 scopeName "CPC_fatal";
 CPC_fnc_fatal = {
 
