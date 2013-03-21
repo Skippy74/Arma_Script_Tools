@@ -5,10 +5,16 @@
 
 
 
-// [object (Vehicle)] 
-// return boundingBox based length
+/**
+ * Gets an object and returns its length.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.02
+ * @param 		vehicle		object
+ * @return 		number		length of object
+ */
 CPC_fnc_getObjectSizeX = {
-	["%1 CPC_fnc_getObjectSizeX (1.1)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_getObjectSizeX (1.02)", _this , 2] call CPC_fnc_debug;
 	
 	
 	_object 				= _this select 0;
@@ -20,10 +26,16 @@ CPC_fnc_getObjectSizeX = {
 
 
 
-// [object (Vehicle)] 
-// return boundingBox based width
+/**
+ * Gets an object and returns its width.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.02
+ * @param 		vehicle		object
+ * @return 		number		width of object
+ */
 CPC_fnc_getObjectSizeY = {
-	["%1 CPC_fnc_getObjectSizeY (1.1)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_getObjectSizeY (1.02)", _this , 2] call CPC_fnc_debug;
 	
 	
 	_object 				= _this select 0;
@@ -35,10 +47,16 @@ CPC_fnc_getObjectSizeY = {
 
 
 
-// [object (Vehicle)] 
-// return boundingBox based height
+/**
+ * Gets an object and returns its height.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.02
+ * @param 		vehicle		object
+ * @return 		number		height of object
+ */
 CPC_fnc_getObjectSizeZ = {
-	["%1 CPC_fnc_getObjectSizeZ (1.1)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_getObjectSizeZ (1.02)", _this , 2] call CPC_fnc_debug;
 	
 	
 	_object 				= _this select 0;
@@ -50,10 +68,18 @@ CPC_fnc_getObjectSizeZ = {
 
 
 
+/**
+ * Gets an object and check if it is burried and visible or not.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.10
+ * @param 		vehicle		object
+ * @return 		bool		TRUE if object is burried and not visible
+ */
 // [object (Vehicle)]
 // return BOOL
 CPC_fnc_isBurried = {
-	["%1 CPC_fnc_isBurried (1.1)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_isBurried (1.10)", _this , 2] call CPC_fnc_debug;
 
 	
 	_object					= _this select 0;
@@ -67,9 +93,18 @@ CPC_fnc_isBurried = {
 
 
 
+/**
+ * Gets an object and an array and change ’object’ position according to the 
+ * values in the array. 
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		vehicle 	object
+ * @param 		array 		position offset
+ */
 // [object (Vehicle), offset (Array)]
 CPC_fnc_move = {
-	["%1 CPC_fnc_move (1.0)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_move (1.01)", _this , 2] call CPC_fnc_debug;
 
 	
 	_object					= _this select 0;

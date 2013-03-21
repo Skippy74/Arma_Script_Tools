@@ -5,10 +5,18 @@
 
 
 
-// [observer (Position), observed (Position)] 
-// return azimuth in degree (from North = 0)
+/**
+ * Gets 2 positions and returns the azimuth between the first and the second, 
+ * in degrees, with North = 0.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		array 		observer’s position
+ * @param 		array 		observed’s position
+ * @return 		number 		angle in degrees
+ */
 CPC_fnc_azimuth = {
-	["%1 CPC_fnc_azimuth (1.0)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_azimuth (1.01)", _this , 2] call CPC_fnc_debug;
 
 	
 	private ["_angle"];
@@ -41,10 +49,24 @@ CPC_fnc_azimuth = {
 
 
 
-// [arrival (Position), departure (Position), segmentLength (Number), angleOffset (Number)]
-// return Positions (Arrays)
+/**
+ * Gets 2 positions (’arrival’ and ’departure’), a ’distance’ and an optional 
+ * ’angleOffset’, returns an array of waypoints that starts with ’departure’
+ * and finishes with ’arrival’, located at ’distance’ from one another.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		array 		arrival’s position
+ * @param 		array 		departure’s position
+ * @param 		number 		distance
+ * @param 		number 		(optional) ’angleOffset’ in degrees ; 
+ * 							the stopover’s position is shifted by a randomized 
+ * 							angle from its trajectory if ’angleOffset’ is given
+ * 							and not zero
+ * @return 		array 		array of waypoints positions
+ */
 CPC_fnc_stopovers = {
-	["%1 CPC_fnc_stopovers (1.0)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_stopovers (1.01)", _this , 2] call CPC_fnc_debug;
 
 	
 	private ["_allStopovers"];
@@ -70,10 +92,25 @@ CPC_fnc_stopovers = {
 
 
 
-// [arrival (Position), departure (Position), segment length (Number), angle offset (Number)]
-// return stopOver's position (Array)
+/**
+ * Gets 2 positions (’arrival’ and ’departure’) and a ’distance’, returns 
+ * a position (’stopover’) located at ’distance’ from ’arrival’ or ’departure’.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.10
+ * @param 		array 		arrival’s position
+ * @param 		array 		departure’s position
+ * @param 		number 		distance ;
+ * 							if negative, distance is from ’arrival’, 
+ * 							if positive, distance is from ’departure’, 
+ * @param 		number 		(optional) ’angleOffset’ in degrees ; 
+ * 							the stopover’s position is shifted by a randomized 
+ * 							angle from its trajectory if ’angleOffset’ is given
+ * 							and not zero
+ * @return 		array 		’stopover’ position
+ */
 CPC_fnc_stopover = {
-	["%1 CPC_fnc_stopover (1.1)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_stopover (1.10)", _this , 2] call CPC_fnc_debug;
 
 
 	private ["_stopover", "_o"];
@@ -118,10 +155,16 @@ CPC_fnc_stopover = {
 
 
 
-// [object (Object), object (Object), ...]
-// return position (Array)
+/**
+ * Gets some objects and returns the 3D position of the center of the swarm.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		vehicle 	(any number of) object
+ * @return 		array		position of the center
+ */
 CPC_fnc_center3D = {
-	["%1 CPC_fnc_center3D (1.0)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_center3D (1.01)", _this , 2] call CPC_fnc_debug;
 
 	
 	_posX 					= 0;
@@ -145,10 +188,19 @@ CPC_fnc_center3D = {
 
 
 
-// [object (Object), object (Object), ...]
-// return position (Array)
+/**
+ * Gets some objects and returns the 2D position of the center of the swarm. 
+ *
+ * Use CPC_fnc_center3D.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				2.01
+ * @param 		vehicle 	(any number of) object
+ * @return 		array		position of the center
+ * @see						CPC_fnc_center3D
+ */
 CPC_fnc_center2D = {
-	["%1 CPC_fnc_center2D (2.0)", _this , 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_center2D (2.01)", _this , 2] call CPC_fnc_debug;
 
 	
 	_pos 					= _this call CPC_fnc_center3D;
