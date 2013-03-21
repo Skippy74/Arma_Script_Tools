@@ -5,10 +5,16 @@
 
 
 
-// [pattern (Number)]
-// return NUMBER
+/**
+ * Returns the bitwise NOT of any number.
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		number
+ * @return 		number 		the bitwise NOT of input
+ */
 CPC_fnc_bitwiseNot = {
-	["%1 CPC_fnc_bitwiseNot (1.0)", _this, 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_bitwiseNot (1.01)", _this, 2] call CPC_fnc_debug;
 
 	_pattern				= _this select 0;
 	_final					= 0;
@@ -30,10 +36,17 @@ CPC_fnc_bitwiseNot = {
 
 
 
-// [pattern (Number), mask (Number)]
-// return NUMBER
+/**
+ * Returns the bitwise AND of two numbers
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		number 		pattern
+ * @param 		number 		mask
+ * @return 		number 		the bitwise of pattern AND mask
+ */
 CPC_fnc_bitwiseAnd = {
-	["%1 CPC_fnc_bitwiseAnd (1.0)", _this, 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_bitwiseAnd (1.01)", _this, 2] call CPC_fnc_debug;
 
 	_pattern				= _this select 0;
 	_mask					= _this select 1;
@@ -57,10 +70,17 @@ CPC_fnc_bitwiseAnd = {
 
 
 
-// [pattern (Number), mask (Number)]
-// return NUMBER
+/**
+ * Returns the bitwise OR of two numbers
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		number 		pattern
+ * @param 		number 		mask
+ * @return 		number 		the bitwise of pattern OR mask
+ */
 CPC_fnc_bitwiseOr = {
-	["%1 CPC_fnc_bitwiseOr (1.0)", _this, 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_bitwiseOr (1.01)", _this, 2] call CPC_fnc_debug;
 
 	_pattern				= _this select 0;
 	_mask					= _this select 1;
@@ -87,10 +107,17 @@ CPC_fnc_bitwiseOr = {
 
 
 
-// [pattern (Number), mask (Number)]
-// return NUMBER
+/**
+ * Returns the bitwise XOR of two numbers
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		number 		pattern
+ * @param 		number 		mask
+ * @return 		number 		the bitwise of pattern XOR mask
+ */
 CPC_fnc_bitwiseXor = {
-	["%1 CPC_fnc_bitwiseXor (1.0)", _this, 2] call CPC_fnc_debug;
+	["%1 CPC_fnc_bitwiseXor (1.01)", _this, 2] call CPC_fnc_debug;
 
 	_pattern				= _this select 0;
 	_mask					= _this select 1;
