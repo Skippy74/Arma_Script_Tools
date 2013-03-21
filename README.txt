@@ -13,10 +13,13 @@ HOW TO USE
 
 1. Copy the folder "functions" into your mission's folder
 2. Load the desired file with the command (replace XXXXXXX by the desired library file) :
-    _script = [] execVM "scripts\functions\OLW_fnc_XXXXXXX.sqf";  
+
+    _script = [] execVM "scripts\functions\CPC_fnc_XXXXXXX.sqf";  
     waitUntil { scriptDone _script };
+
 3. Call the desired function with the command (replace XXXXXXX by the desired function's name and replace params with the required function's parameters) :
-    [params] call OLW_fnc_XXXXXXX
+
+    [params] call CPC_fnc_XXXXXXX
 
 
 IF YOU WANT TO STAY UP-TO-DATE
