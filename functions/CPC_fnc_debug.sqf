@@ -68,8 +68,9 @@ CPC_fnc_debug = {
 
 
 /**
- * Gets debugMessage (message, optional values, messageLevel) associated to an
- * UID to ensure that the message is displayed only once. 
+ * Gets 'debugMessage' (message, optional values, messageLevel) associated to
+ * an 'UID' and send 'debugMessage' to 'CPC_fnc_debug' only if 'UID' has not
+ * been received previously.  
  * 
  * Great to track variables' modifications at the start of a loop 
  * 
@@ -80,6 +81,7 @@ CPC_fnc_debug = {
  * 							'message' via the 'format' command 
  * @param 		number 		messageLevel
  * @param 		string 		uniqueIdentity
+ * @see 					CPC_fnc_debug
  */
 // [message (String), level (Number), unique ID (Number)]
 CPC_debugArray 				= [];
@@ -95,6 +97,66 @@ CPC_fnc_debugOnce = {
 		_this call CPC_fnc_debug;
 	};
 };
+
+
+
+
+/**
+ * Gets 'debugMessage' (message, optional values, messageLevel) associated to
+ * an 'UID' and send 'debugMessage' to 'CPC_fnc_debug' only if 'debugMessage' 
+ * has been modified. 
+ * 
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		string 		message
+ * @param 		any 		(optional) params that can be inserted into 
+ * 							'message' via the 'format' command 
+ * @param 		number 		messageLevel
+ * @param 		string 		uniqueIdentity
+ * @see 					CPC_fnc_debug
+ */
+// [message (String), level (Number), unique ID (Number)]
+CPC_debugArrayValues 		= [];
+CPC_fnc_debugModifs = {
+
+
+	_uID 					= _this call BIS_fnc_arrayPop;
+	_index 					= _uID find CPC_debugArray;
+	_newMessage 			= format _this;
+	_send 					= FALSE;
+
+	
+	if (-1 == _index) then {
+
+		// If _uID is not already in Array
+		// _uID is inserted into array as the last item
+		_send 				= TRUE;
+		_index 				= count CPC_debugArray;
+
+		CPC_debugArray 	set [_index, _uID];
+		publicVariable "CPC_debugArray";
+	} else {
+		
+		// If _uID is already in Array
+		// message is compared to the stored value
+		_oldMessage 		= CPC_debugArrayValues select _index;
+		if (_oldMessage != _newMessage) then {
+			// if messages are different, message is inserted into array
+			// at its previous index
+			_send 			= TRUE;
+		};
+	};
+	
+	
+	if (_send) then {
+		CPC_debugArrayValues set [_index, _newMessage];
+		publicVariable "CPC_debugArrayValues";
+
+		// message is sent to debug function
+		_this call CPC_fnc_debug;
+	};
+};
+
 
 
 
