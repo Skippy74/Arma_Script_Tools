@@ -6,6 +6,7 @@
  * @version 				1.01
  * @param 		array
  * @return 		void
+ * @todo		simplifier les tests
 */
 
 CPC_fnc_setDiametricallyOpposite = {
@@ -26,6 +27,7 @@ CPC_fnc_setDiametricallyOpposite = {
 	_group 					= _this select 2;
 	_debug 					= [_this, 3, false] call CBA_fnc_defaultParam;
 
+	//probablement simplifiable (voir la fonction CPC_fnc_setGroupOnCircleRandom)
 	if(_centerX < _unit1PosX) then
 	{
 		if(_centerY < _unit1PosY) then
@@ -62,7 +64,7 @@ CPC_fnc_setDiametricallyOpposite = {
 	};
 
 
-	//debug
+	//debug marker
 
 	if(_debug) then
 	{
@@ -85,6 +87,7 @@ CPC_fnc_setDiametricallyOpposite = {
  * @version 				1.00
  * @param 		array
  * @return 		void
+ * @todo		corriger les erreurs de position finale
 */
 CPC_fnc_setGroupOnCircleRandom = {
 
@@ -104,7 +107,6 @@ CPC_fnc_setGroupOnCircleRandom = {
 
 	_centerX 						= (_this select 0) select 0;
 	_centerY 						= (_this select 0) select 1;
-
 	_centerArray					= [_centerX, _centerY];
 
 	_group							= (_this select 1);
@@ -115,16 +117,15 @@ CPC_fnc_setGroupOnCircleRandom = {
 
 	_k1 							= (-1)^(floor(random 2)); //1 or -1
 
-	_unitX 							= (getPosATL (_group select 0)) select 0;
+	_unitX 							= (getPosATL (_group select 0)) select 0; //on travail avec la première unité du groupe
 	_unitY 							= (getPosATL (_group select 0)) select 1;
 
 	_distCenterXtoUnitX 			= (_unitX - _centerX);
 	_distCenterYtoUnitY 			= (_unitY - _centerY);
-
 	_distCenterToUnit 				= _centerArray distance (_group select 0);
 
 
-	if(_distCenterYtoUnitY >= 0) then
+	if(_distCenterYtoUnitY >= 0) then //si l'unité est "au nord" du point central
 	{
 		_newAngle 					= acos(_distCenterXtoUnitX / _distCenterToUnit) + (_k1 * _angle);
 	}
@@ -139,7 +140,7 @@ CPC_fnc_setGroupOnCircleRandom = {
 	};
 
 
-	//debug
+	//debug marker
 
 	if(_debug) then
 	{
