@@ -170,7 +170,7 @@ CPC_fnc_stopover = {
 		// ex : _length = -20, then _stopover is at 20 meters from _arrival
 		// ex : _length = 50, then _stopover is at 50 meters from _departure
 		if (_length < 0) then {
-			_o 					= _arrival;
+			_o 					= _arrival; //renommer _o?
 		} else {
 			_o 					= _departure;
 		};
@@ -238,7 +238,7 @@ CPC_fnc_center2D = {
 	_pos 					= _this call CPC_fnc_center3D;
 	
 	
-	[_pos select 0 , _pos select 1 , 0]
+	[_pos select 0 , _pos select 1 , 0] //2D position ou 3D position ATL?
 };
 
 
