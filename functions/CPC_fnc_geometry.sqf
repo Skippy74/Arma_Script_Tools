@@ -1,79 +1,56 @@
-/**
+
+
+ 
+ /**
  * Move a group of units to the diametrically opposite point of a given unit, relative to a marker
- * [unit(object unit), "MarkerName"(string), group(object group), b(bool, optional)] b is a boolean that will reveal/hide the location of the created group.
+ * [unit(object unit), "MarkerName"(string)]
  *
- * @author		Skippy (jean.battistel@gmail.com)
- * @version 				1.01
- * @param 		array
+ * @author					Skippy (jean.battistel@gmail.com)
+ * @version 				1.02
+ * @param 		vehicle 	unit, gives the position of origin
+ * @param 		string 		marker's name, gives the center of the rotation 
+ * @param 		group 		group of units to move
+ * @param 		bool 		if TRUE, a marker is placed at final position
  * @return 		void
- * @todo		simplifier les tests
+ * @see 					CPC_fnc_rotate
+ * @see 					CPC_fnc_moveGroup
 */
-
 CPC_fnc_setDiametricallyOpposite = {
-	 
-		private["_i",
-			"_unit1PosX",
-			"_unit1PosY",
-			"_centerX",
-			"_centerY",
-			"_group",
-			"_debug",
-			"_marker"];
-
-	_unit1PosX 				= (getPosATL (_this select 0)) select 0;
-	_unit1PosY 				= (getPosATL (_this select 0)) select 1;
-	_centerX 				= (getMarkerPos (_this select 1)) select 0;
-	_centerY 				= (getMarkerPos (_this select 1)) select 1;
+	["%1 CPC_fnc_setDiametricallyOpposite (1.02)", _this , 2] call CPC_fnc_debug;
+	
+	_originPos 				= getPosATL (_this select 0);
+	_centerPos 				= getMarkerPos (_this select 1);
 	_group 					= _this select 2;
-	_debug 					= [_this, 3, false] call CBA_fnc_defaultParam;
-
-	//probablement simplifiable (voir la fonction CPC_fnc_setGroupOnCircleRandom)
-	if(_centerX < _unit1PosX) then
-	{
-		if(_centerY < _unit1PosY) then
-		{
-			for "_i" from 0 to ((count _group) - 1) step 1 do
-			{
-				(_group select _i) setPosATL [(_centerX - (abs(_centerX - _unit1PosX))) + _i, _centerY - (abs(_centerY - _unit1PosY)), 0];
-			};
-		}
-		else
-		{
-			for "_i" from 0 to ((count _group) - 1) step 1 do
-			{
-				(_group select _i) setPosATL [(_centerX - (abs(_centerX - _unit1PosX))) + _i, _centerY + (abs(_centerY - _unit1PosY)), 0];
-			};
-		};
-	}
-	else
-	{
-		if(_centerY > _unit1PosY) then
-		{
-			for "_i" from 0 to ((count _group) - 1) step 1 do
-			{
-				(_group select _i) setPosATL [(_centerX + (abs(_centerX - _unit1PosX))) + _i, _centerY + (abs(_centerY - _unit1PosY)), 0];
-			};
-		}
-		else
-		{
-			for "_i" from 0 to ((count _group) - 1) step 1 do
-			{
-				(_group select _i) setPosATL [(_centerX + (abs(_centerX - _unit1PosX))) + _i, _centerY - (abs(_centerY - _unit1PosY)), 0];
-			};
-		};
-	};
-
-
-	//debug marker
+	
+	
+	// final position is calculated
+	_finalPos 				= [_originPos, _centerPos, 180] call CPC_fnc_rotate;
+	
+	
+	// group is moved
+	[_group, _finalPos, 10] call CPC_fnc_moveGroup;
+	
+	
+	/*
+	 * DEBUG
+	 */
+	_debug 					= [ _this , 3 , false ] call CBA_fnc_defaultParam;
 
 	if(_debug) then
 	{
-		_marker = createMarker["mkDebugDiametrically", getPosATL (_group select 1)];
-		_marker setMarkerShape "ICON";
-		"mkDebugDiametrically" setMarkerType "DOT";
-		"mkDebugDiametrically" setMarkerColor "ColorYellow";
-		"mkDebugDiametrically" setMarkerSize [2, 2];
-		"mkDebugDiametrically"  setMarkerText "Debug Marker fnc_setDiametricallyOpposite"
+		_markerPos = createMarker["mkDebugDiametricallyPos", _finalPos];
+		_markerPos setMarkerShape "ICON";
+		"mkDebugDiametricallyPos" setMarkerType "DOT";
+		"mkDebugDiametricallyPos" setMarkerColor "ColorYellow";
+		"mkDebugDiametricallyPos" setMarkerSize [2, 2];
+		"mkDebugDiametricallyPos"  setMarkerText "Debug Marker Pos fnc_setDiametricallyOpposite";
+		
+		_markerGroup = createMarker["mkDebugDiametricallyGroup", _group call CPC_fnc_center2D];
+		_markerGroup setMarkerShape "ICON";
+		"mkDebugDiametricallyGroup" setMarkerType "DOT";
+		"mkDebugDiametricallyGroup" setMarkerColor "ColorBlue";
+		"mkDebugDiametricallyGroup" setMarkerSize [2, 2];
+		"mkDebugDiametricallyGroup"  setMarkerText "Debug Marker Group fnc_setDiametricallyOpposite";
 	};
 };
 
