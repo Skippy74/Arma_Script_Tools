@@ -56,83 +56,69 @@ CPC_fnc_setDiametricallyOpposite = {
 
 
 
+
 /**
  * Move a group of units randomly on a circle 
- * [center (position), group1 (group), angle(scalar), b(bool, optional)] b is a boolean that will reveal/hide the location of the created group.
  *
- * @author		Skippy (jean.battistel@gmail.com)
- * @version 				1.00
- * @param 		array
+ * @author					Skippy (jean.battistel@gmail.com)
+ * @version 				1.02
+ * @param 		array 		position of the rotation's center
+ * @param 		group 		group of units to move
+ * @param 		number 		max angle to rotate
+ * @param 		bool 		if TRUE, a marker is placed at final position
  * @return 		void
- * @todo		corriger les erreurs de position finale
+ * @todo					corriger les erreurs de position finale
 */
 CPC_fnc_setGroupOnCircleRandom = {
+	["%1 CPC_fnc_setGroupOnCircleRandom (1.02)", _this , 2] call CPC_fnc_debug;
+	
+	_centerPos 				= _this select 0;
+	_group 					= _this select 1;
 
-	private["_centerX",
-			"_centerY",
-			"_centerArray",
-			"_group",
-			"_angle",
-			"_k1",
-			"_distCenterToUnit",
-			"_unitX",
-			"_unitY",
-			"_distCenterToUnit",
-			"_debug",
-			"_marker",
-			"_newAngle"];
+	_angle 					= _this select 2;
+	_angle 					= floor (random (_angle * 2)) - _angle;
 
-	_centerX 						= (_this select 0) select 0;
-	_centerY 						= (_this select 0) select 1;
-	_centerArray					= [_centerX, _centerY];
+	_originPos 				= _group call CPC_fnc_center2D;
 
-	_group							= (_this select 1);
-
-	_angle 							= floor(random(_this select 2)) + 1;
-
-	_debug 							= [_this, 3, false] call CBA_fnc_defaultParam;
-
-	_k1 							= (-1)^(floor(random 2)); //1 or -1
-
-	_unitX 							= (getPosATL (_group select 0)) select 0; //on travail avec la première unité du groupe
-	_unitY 							= (getPosATL (_group select 0)) select 1;
-
-	_distCenterXtoUnitX 			= (_unitX - _centerX);
-	_distCenterYtoUnitY 			= (_unitY - _centerY);
-	_distCenterToUnit 				= _centerArray distance (_group select 0);
-
-
-	if(_distCenterYtoUnitY >= 0) then //si l'unité est "au nord" du point central
-	{
-		_newAngle 					= acos(_distCenterXtoUnitX / _distCenterToUnit) + (_k1 * _angle);
-	}
-	else
-	{
-		_newAngle 					= (360 - acos(_distCenterXtoUnitX/_distCenterToUnit)) + (_k1 * _angle);
-	};
-
-	for "_i" from 0 to ((count _group) - 1) step 1 do
-	{
-		(_group select _i) setPosATL [_centerX + (_distCenterToUnit * cos(_newAngle)) + _i, _centerY + (_distCenterToUnit * sin(_newAngle)), 0];
-	};
-
-
-	//debug marker
+	
+	// final position is calculated
+	_finalPos 				= [_originPos, _centerPos, _angle] call CPC_fnc_rotate;
+	
+	
+	// group is moved
+	[_group, _finalPos, 10] call CPC_fnc_moveGroup;
+	
+	
+	/*
+	 * DEBUG
+	 */
+	_debug 					= [ _this , 3 , false ] call CBA_fnc_defaultParam;
 
 	if(_debug) then
 	{
-		(_group select 0) sideChat format[" _distCenterXtoUnitX %1", _distCenterXtoUnitX];
-		(_group select 0) sideChat format[" _distCenterToUnit %1", _distCenterToUnit];
-		(_group select 0) sideChat format[" nouvel angle : %1", _newAngle];
-		(_group select 0) sideChat format["ancienne distance %1", _distCenterToUnit];
-		(_group select 0) sideChat format["nouvelle distance %1", (_centerArray distance (_group select 0))];
-		
-		_marker = createMarker["mkDebugOnCircle", getPosATL (_group select 1)];
-		_marker setMarkerShape "ICON";
-		"mkDebugOnCircle" setMarkerType "DOT";
-		"mkDebugOnCircle" setMarkerColor "ColorRed";
-		"mkDebugOnCircle" setMarkerSize [2, 2];
-		"mkDebugOnCircle"  setMarkerText "Debug Marker fnc_setRandomGroupOnCircle"
+		(_group select 0) sideChat format["ancienne distance : %1", _originPos distance _centerPos];
+		(_group select 0) sideChat format["nouvelle distance : %1", (_group call CPC_fnc_center2D) distance _centerPos];
+				
+		_markerOldPos = createMarker["mkDebugOnCircleOldPos", _originPos];
+		_markerOldPos setMarkerShape "ICON";
+		"mkDebugOnCircleOldPos" setMarkerType "DOT";
+		"mkDebugOnCircleOldPos" setMarkerColor "ColorYellow";
+		"mkDebugOnCircleOldPos" setMarkerSize [1 , 1];
+		"mkDebugOnCircleOldPos"  setMarkerText "Debug Marker oldPos fnc_setRandomGroupOnCircle";
+				
+		_markerNewPos = createMarker["mkDebugOnCircleNewPos", _finalPos];
+		_markerNewPos setMarkerShape "ICON";
+		"mkDebugOnCircleNewPos" setMarkerType "DOT";
+		"mkDebugOnCircleNewPos" setMarkerColor "ColorYellow";
+		"mkDebugOnCircleNewPos" setMarkerSize [2 , 2];
+		"mkDebugOnCircleNewPos"  setMarkerText "Debug Marker newPos fnc_setRandomGroupOnCircle";
+				
+		_markerGroup = createMarker["mkDebugOnCircleGroup", _group call CPC_fnc_center2D];
+		_markerGroup setMarkerShape "ICON";
+		"mkDebugOnCircleGroup" setMarkerType "DOT";
+		"mkDebugOnCircleGroup" setMarkerColor "ColorBlue";
+		"mkDebugOnCircleGroup" setMarkerSize [2 , 2];
+		"mkDebugOnCircleGroup"  setMarkerText "Debug Marker Group fnc_setRandomGroupOnCircle";
 	};
 };
 
