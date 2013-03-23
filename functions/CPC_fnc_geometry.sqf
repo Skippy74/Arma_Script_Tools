@@ -67,6 +67,8 @@ CPC_fnc_setDiametricallyOpposite = {
  * @param 		number 		max angle to rotate
  * @param 		bool 		if TRUE, a marker is placed at final position
  * @return 		void
+ * @see 					CPC_fnc_rotate
+ * @see 					CPC_fnc_moveGroup
  * @todo					corriger les erreurs de position finale
 */
 CPC_fnc_setGroupOnCircleRandom = {
