@@ -49,6 +49,39 @@ CPC_fnc_azimuth = {
 
 
 
+
+ /**
+ * Gets two position and a number and applies a rotation of 'angle' degrees at 
+ * the first argument with second argument as the center of the rotation.
+ *
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		array 		position of origin
+ * @param 		array 		position of the rotation's center
+ * @param 		number 		angle to rotate
+ * @return 		array 		position, after the rotation
+*/
+CPC_fnc_posRotation = {
+	["%1 CPC_fnc_posRotation (1.01)", _this , 2] call CPC_fnc_debug;
+	
+	// z position (altitude) is unwanted
+	_origin 				= [(_this select 0) select 0 , (_this select 0) select 1 , 0];
+	_center 				= [(_this select 1) select 0 , (_this select 1) select 1 , 0];
+
+	_angle 					= [_center, _origin] call CPC_fnc_azimuth;
+	_angle 					= _angle + (_this select 2);
+
+	_distance 				= _center distance _origin;
+
+
+	[(_center select 0) + (_distance * cos _angle), 
+	 (_center select 1) + (_distance * sin _angle), 
+	 0]
+};
+
+
+
+
 /**
  * Gets 2 positions ('arrival' and 'departure'), a 'distance' and an optional 
  * 'angleOffset', returns an array of waypoints that starts with 'departure'
