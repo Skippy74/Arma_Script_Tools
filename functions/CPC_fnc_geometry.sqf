@@ -10,7 +10,7 @@
 */
 
 CPC_fnc_setDiametricallyOpposite = {
-
+	 
 		private["_i",
 			"_unit1PosX",
 			"_unit1PosY",
@@ -157,4 +157,74 @@ CPC_fnc_setGroupOnCircleRandom = {
 		"mkDebugOnCircle" setMarkerSize [2, 2];
 		"mkDebugOnCircle"  setMarkerText "Debug Marker fnc_setRandomGroupOnCircle"
 	};
+};
+
+
+
+
+ /**
+ * Gets two position and a number and applies a rotation of 'angle' degrees at 
+ * the first argument with second argument as the center of the rotation.
+ *
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		array 		position of origin
+ * @param 		array 		position of the rotation's center
+ * @param 		number 		angle to rotate
+ * @return 		array 		position, after the rotation
+*/
+CPC_fnc_rotate = {
+	["%1 CPC_fnc_rotate (1.01)", _this , 2] call CPC_fnc_debug;
+	
+	// z position (altitude) is unwanted
+	_origin 				= [(_this select 0) select 0 , (_this select 0) select 1 , 0];
+	_center 				= [(_this select 1) select 0 , (_this select 1) select 1 , 0];
+
+	_angle 					= [_center, _origin] call CPC_fnc_azimuth;
+	_angle 					= _angle + (_this select 2);
+
+	_distance 				= _center distance _origin;
+
+
+	[(_center select 0) + (_distance * cos _angle), 
+	 (_center select 1) + (_distance * sin _angle), 
+	 0]
+};
+
+
+
+
+ /**
+ * Gets a group, a position and an optional radius, and move each unit 
+ * of 'group' within 'radius' meters around 'position'.
+ *
+ * @author 					la_Vieille (laVieille.fr@gmail.com)
+ * @version 				1.01
+ * @param 		group 		
+ * @param 		array 		position of the arrival
+ * @param 		number 		radius
+ * @return 		void
+*/
+CPC_fnc_moveGroup = {
+	["%1 CPC_fnc_moveGroup (1.01)", _this , 2] call CPC_fnc_debug;
+	
+	
+	_group 					= _this select 0;
+	_arrival 				= _this select 1;
+	_radius 				= [ _this, 2 , 0 ] call CBA_fnc_defaultParam;
+	
+	
+	{
+		// _moveTo is _arrival + _offset
+		_moveTo 			= [0 , 0 , 0];
+		// an offset is added for X and Y component of _finalPos
+		for "_i" from 0 to 1 do {
+			// position offset is between -_radius and +_radius
+			_offset 		= floor (random (_radius * 2)) - _radius;
+			_moveTo set [_i, _arrival select _i + _offset];
+		};
+
+		// unit is sent to _moveTo
+		_x setPosATL _moveTo;
+	} foreach _group;
 };
