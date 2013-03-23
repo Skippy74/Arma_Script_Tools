@@ -12,7 +12,7 @@
  * @param 		group 		group of units to move
  * @param 		bool 		if TRUE, a marker is placed at final position
  * @return 		void
- * @see 					CPC_fnc_rotate
+ * @see 					CPC_fnc_posRotation
  * @see 					CPC_fnc_moveGroup
 */
 CPC_fnc_setDiametricallyOpposite = {
@@ -24,7 +24,7 @@ CPC_fnc_setDiametricallyOpposite = {
 	
 	
 	// final position is calculated
-	_finalPos 				= [_originPos, _centerPos, 180] call CPC_fnc_rotate;
+	_finalPos 				= [_originPos, _centerPos, 180] call CPC_fnc_posRotation;
 	
 	
 	// group is moved
@@ -67,7 +67,7 @@ CPC_fnc_setDiametricallyOpposite = {
  * @param 		number 		max angle to rotate
  * @param 		bool 		if TRUE, a marker is placed at final position
  * @return 		void
- * @see 					CPC_fnc_rotate
+ * @see 					CPC_fnc_posRotation
  * @see 					CPC_fnc_moveGroup
  * @todo					corriger les erreurs de position finale
 */
@@ -84,7 +84,7 @@ CPC_fnc_setGroupOnCircleRandom = {
 
 	
 	// final position is calculated
-	_finalPos 				= [_originPos, _centerPos, _angle] call CPC_fnc_rotate;
+	_finalPos 				= [_originPos, _centerPos, _angle] call CPC_fnc_posRotation;
 	
 	
 	// group is moved
@@ -138,8 +138,8 @@ CPC_fnc_setGroupOnCircleRandom = {
  * @param 		number 		angle to rotate
  * @return 		array 		position, after the rotation
 */
-CPC_fnc_rotate = {
-	["%1 CPC_fnc_rotate (1.01)", _this , 2] call CPC_fnc_debug;
+CPC_fnc_posRotation = {
+	["%1 CPC_fnc_posRotation (1.01)", _this , 2] call CPC_fnc_debug;
 	
 	// z position (altitude) is unwanted
 	_origin 				= [(_this select 0) select 0 , (_this select 0) select 1 , 0];
