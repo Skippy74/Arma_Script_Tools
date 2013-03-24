@@ -1,13 +1,13 @@
-hop
+ï»¿hop
 
 
 
-je trouve github très interressant à utiliser, mais je trouve que l'absence de moyens de communications entre les participants à un projet est handicapante. Tant mieux certainement puisque cela permet à l'équipe de choisir elle même l'outil externe qu'elle veut utiliser. En attendant, et comme les MP sur le forum sont tout sauf pratiques, je te balance un .txt en attendant de trouver mieux.
+je trouve github trÃ¨s interressant Ã  utiliser, mais je trouve que l'absence de moyens de communications entre les participants Ã  un projet est handicapante. Tant mieux certainement puisque cela permet Ã  l'Ã©quipe de choisir elle mÃªme l'outil externe qu'elle veut utiliser. En attendant, et comme les MP sur le forum sont tout sauf pratiques, je te balance un .txt en attendant de trouver mieux.
 
 
 
 Concernant les derniers commit : 
-j'ai modifié les fonctions que tu as créées en les factorisant et en réutilisant des fonctions déjà écrites. Mais en y réfléchissant, je pense que j'aurais du faire comme j'ai fait pour le fichier " init.sqf " du projet " Mission_ARMA2 " : proposer une fonction sans effacer l'ancienne. Pourquoi ? Parce qu'en faisant ainsi, tu as la possibilité de lire mon code et de t'en inspirer si tu trouves qu'il répond à tes besoins, mais cela te laisse surtout la possibilité de factoriser toi même la fonction en question et de trouver au problème rencontré, des solutions originales auxquelles je n'aurais pas pensé. Cela dépend de ce que l'on cherche, produire rapidement du code de qualité ou te fournir l'occasion de développer tes compétences. Les méthodes doivent s'adapter au but, pas le contraire ;)
+j'ai modifiÃ© les fonctions que tu as crÃ©Ã©es en les factorisant et en rÃ©utilisant des fonctions dÃ©jÃ  Ã©crites. Mais en y rÃ©flÃ©chissant, je pense que j'aurais du faire comme j'ai fait pour le fichier " init.sqf " du projet " Mission_ARMA2 " : proposer une fonction sans effacer l'ancienne. Pourquoi ?Â Parce qu'en faisant ainsi, tu as la possibilitÃ© de lire mon code et de t'en inspirer si tu trouves qu'il rÃ©pond Ã  tes besoins, mais cela te laisse surtout la possibilitÃ© de factoriser toi mÃªme la fonction en question et de trouver au problÃ¨me rencontrÃ©, des solutions originales auxquelles je n'aurais pas pensÃ©. Cela dÃ©pend de ce que l'on cherche, produire rapidement du code de qualitÃ© ou te fournir l'occasion de dÃ©velopper tes compÃ©tences. Les mÃ©thodes doivent s'adapter au but, pas le contraire ;)
 
 
 
@@ -17,19 +17,19 @@ J'avais sinon quelques remarques sur tes interfaces.
 et 
 [center, group, angle, debug] call CPC_fnc_setGroupOnCircleRandom 
 
-L'utilisation du paramètre debug en entrée ne me semble pas être une bonne idée. J'aurais du mal à expliquer pourquoi, mais je préfère utiliser des variables globales et extraire le boulot de débogage pour qu'il soit effectué en dehors de la fonction. Mais je ne te conseille pas de faire comme moi, c'est juste une réflexion.
+L'utilisation du paramÃ¨tre debug en entrÃ©e ne me semble pas Ãªtre une bonne idÃ©e. J'aurais du mal Ã  expliquer pourquoi, mais je prÃ©fÃ¨re utiliser des variables globales et extraire le boulot de dÃ©bogage pour qu'il soit effectuÃ© en dehors de la fonction. Mais je ne te conseille pas de faire comme moi, c'est juste une rÃ©flexion.
 
-Essaye également de réutiliser tes interfaces au maximum ; là par exemple, elles ne sont pas les mêmes alors qu'il n'y a aucune raison logique à ce qu'elles soient différentes.
+Essaye Ã©galement de rÃ©utiliser tes interfaces au maximumÂ ; lÃ  par exemple, elles ne sont pas les mÃªmes alors qu'il n'y a aucune raison logique Ã  ce qu'elles soient diffÃ©rentes.
 
-Ce qui nous amène au troisième point : la réusabilité. Il est préférable que tes interfaces soient le plus génériques possibles. Ainsi il est préférable que l'interface de ta première fonction s'approche de celle-ci :
+Ce qui nous amÃ¨ne au troisiÃ¨me point : la rÃ©usabilitÃ©. Il est prÃ©fÃ©rable que tes interfaces soient le plus gÃ©nÃ©riques possibles. Ainsi il est prÃ©fÃ©rable que l'interface de ta premiÃ¨re fonction s'approche de celle-ci :
 
 [position, position, group, debug] call CPC_fnc_setDiametricallyOpposite
 
-C'est d'ailleurs ce que tu as fait pour la seconde fonction, je dois donc être en train d'enfoncer une porte ouverte ;)
+C'est d'ailleurs ce que tu as fait pour la seconde fonction, je dois donc Ãªtre en train d'enfoncer une porte ouverte ;)
 
 
 
-Pour les modifications dans topo.sqf, n'hésite pas à apporter les modifs qui te semblent nécessaires, tant que cela ne modifie pas l'interface. ta réponse ou tes commentaires ici 
+Pour les modifications dans topo.sqf, n'hÃ©site pas Ã  apporter les modifs qui te semblent nÃ©cessaires, tant que cela ne modifie pas l'interface. ta rÃ©ponse ou tes commentaires ici 
 
 	|
 	v
