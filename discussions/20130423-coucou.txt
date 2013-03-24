@@ -1,0 +1,40 @@
+hop
+
+
+
+je trouve github très interressant à utiliser, mais je trouve que l'absence de moyens de communications entre les participants à un projet est handicapante. Tant mieux certainement puisque cela permet à l'équipe de choisir elle même l'outil externe qu'elle veut utiliser. En attendant, et comme les MP sur le forum sont tout sauf pratiques, je te balance un .txt en attendant de trouver mieux.
+
+
+
+Concernant les derniers commit : 
+j'ai modifié les fonctions que tu as créées en les factorisant et en réutilisant des fonctions déjà écrites. Mais en y réfléchissant, je pense que j'aurais du faire comme j'ai fait pour le fichier " init.sqf " du projet " Mission_ARMA2 " : proposer une fonction sans effacer l'ancienne. Pourquoi ? Parce qu'en faisant ainsi, tu as la possibilité de lire mon code et de t'en inspirer si tu trouves qu'il répond à tes besoins, mais cela te laisse surtout la possibilité de factoriser toi même la fonction en question et de trouver au problème rencontré, des solutions originales auxquelles je n'aurais pas pensé. Cela dépend de ce que l'on cherche, produire rapidement du code de qualité ou te fournir l'occasion de développer tes compétences. Les méthodes doivent s'adapter au but, pas le contraire ;)
+
+
+
+J'avais sinon quelques remarques sur tes interfaces. 
+
+[unit, markerName, group, debug] call CPC_fnc_setDiametricallyOpposite
+et 
+[center, group, angle, debug] call CPC_fnc_setGroupOnCircleRandom 
+
+L'utilisation du paramètre debug en entrée ne me semble pas être une bonne idée. J'aurais du mal à expliquer pourquoi, mais je préfère utiliser des variables globales et extraire le boulot de débogage pour qu'il soit effectué en dehors de la fonction. Mais je ne te conseille pas de faire comme moi, c'est juste une réflexion.
+
+Essaye également de réutiliser tes interfaces au maximum ; là par exemple, elles ne sont pas les mêmes alors qu'il n'y a aucune raison logique à ce qu'elles soient différentes.
+
+Ce qui nous amène au troisième point : la réusabilité. Il est préférable que tes interfaces soient le plus génériques possibles. Ainsi il est préférable que l'interface de ta première fonction s'approche de celle-ci :
+
+[position, position, group, debug] call CPC_fnc_setDiametricallyOpposite
+
+C'est d'ailleurs ce que tu as fait pour la seconde fonction, je dois donc être en train d'enfoncer une porte ouverte ;)
+
+
+
+Pour les modifications dans topo.sqf, n'hésite pas à apporter les modifs qui te semblent nécessaires, tant que cela ne modifie pas l'interface. ta réponse ou tes commentaires ici 
+
+	|
+	v
+
+
+
+
+-----------------------------------------------------------------------------------------
