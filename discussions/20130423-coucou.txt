@@ -34,7 +34,15 @@ Pour les modifications dans topo.sqf, n'hésite pas à apporter les modifs qui t
 	|
 	v
 
-
-
-
 -----------------------------------------------------------------------------------------
+
+Oui.
+Il faudrait effectivement trouver mieux que ce txt qui est d'une chiantitude absolue à lire.
+Concernant la modification des fonctions; du moment que celui créer la fonction comprend la résolution proposée, il n'y a pas de problème à modifier directement (c'est bien là le but de mettre en commun).
+Cela dit, mettre la proposition en commentaire semble aussi être une bonne alternative.
+Pour les deux fonctions que j'avais proposées, ayant compris comment faire ça ne m'a pas choqué que tu modifies de but en blanc.
+De manière générale je suis plutôt pour ce genre de chose, à condition que le code soit vraiment bien commenté (c'est le plus dur je pense, se mettre dans la tête des autres pour qu'ils comprennent ce que l'on a voulu implémenter).
+
+En ce moment je n'ai de toute façon pas vraiment le temps d'assimiler l'ensemble de tes fonctions; donc à partir du moment où les changements n'altèrent pas le fonctionnement je n'y vois aucun problème.
+
+Concernant un vrai projet en commun (oui parce que là c'est quand même bien décousu), à vrai dire je n'ai pas vraiment d'idée ni de temps à consacrer à en trouver.
